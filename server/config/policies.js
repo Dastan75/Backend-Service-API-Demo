@@ -62,6 +62,15 @@ module.exports.policies = {
     'destroy':  ['isAuthorized', 'asPermission']
   },
 
+  'MarketController': {
+    '*':        false, 
+    'create':   ['isAuthorized', 'asPermission'],
+    'update':   ['isAuthorized', 'asPermission'],
+    'find':     true,
+    'findOne':  true,
+    'destroy':  ['isAuthorized', 'asPermission']
+  },
+
   'AuthController': {
     '*': true // We dont need authorization here, allowing public access
   }
