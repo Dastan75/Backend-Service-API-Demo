@@ -1,0 +1,21 @@
+version: '2'
+services:
+  mongo:
+    image: "mongo:latest"
+    expose:
+    - 27017
+    networks:
+      - db
+  template_api_prod:
+    build:
+      context: ../../server/
+      dockerfile: ./docker/prod/Dockerfile
+    ports:
+     - "1337:1337"
+    networks:
+      - db
+    depends_on:
+      - mongo
+networks:
+  db:
+   driver: bridge
