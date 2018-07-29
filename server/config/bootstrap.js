@@ -14,6 +14,7 @@ module.exports.bootstrap = async function (done) {
   //   return done();
   // }
 
+
   //******************* CREATE PROFILE TEMPLATE *******************//
 
   //******** CREATE PROFILE ADMIN ********//
@@ -75,6 +76,10 @@ module.exports.bootstrap = async function (done) {
     await Routes.findOrCreate({ url: '/profile/:id', profile: createdAdmin.id }, { name: 'PROFILE ID', url: '/profile/:id', boGet: 'ALLOW ALL', boPost: 'ALLOW ALL', boDelete: 'ALLOW ALL', boPatch: 'ALLOW ALL', isWeb: false, isDisabled: false, profile: createdAdmin.id });
     await Routes.findOrCreate({ url: '/routes', profile: createdAdmin.id }, { name: 'ROUTES', url: '/routes', boGet: 'ALLOW ALL', boPost: 'ALLOW ALL', boDelete: 'ALLOW ALL', boPatch: 'ALLOW ALL', isWeb: false, isDisabled: false, profile: createdAdmin.id });
     await Routes.findOrCreate({ url: '/routes/:id', profile: createdAdmin.id }, { name: 'ROUTES ID', url: '/routes/:id', boGet: 'ALLOW ALL', boPost: 'ALLOW ALL', boDelete: 'ALLOW ALL', boPatch: 'ALLOW ALL', isWeb: false, isDisabled: false, profile: createdAdmin.id });
+    await Routes.findOrCreate({ url: '/market', profile: createdAdmin.id }, { name: 'MARKET', url: '/market', boGet: 'ALLOW ALL', boPost: 'ALLOW ALL', boDelete: 'ALLOW ALL', boPatch: 'ALLOW ALL', isWeb: false, isDisabled: false, profile: createdAdmin.id });
+    await Routes.findOrCreate({ url: '/market/:id', profile: createdAdmin.id }, { name: 'MARKET ID', url: '/market/:id', boGet: 'ALLOW ALL', boPost: 'ALLOW ALL', boDelete: 'ALLOW ALL', boPatch: 'ALLOW ALL', isWeb: false, isDisabled: false, profile: createdAdmin.id });
+    await Routes.findOrCreate({ url: '/new', profile: createdAdmin.id }, { name: 'NEWS', url: '/new', boGet: 'ALLOW ALL', boPost: 'ALLOW ALL', boDelete: 'ALLOW ALL', boPatch: 'ALLOW ALL', isWeb: false, isDisabled: false, profile: createdAdmin.id });
+    await Routes.findOrCreate({ url: '/new/:id', profile: createdAdmin.id }, { name: 'NEWS ID', url: '/new/:id', boGet: 'ALLOW ALL', boPost: 'ALLOW ALL', boDelete: 'ALLOW ALL', boPatch: 'ALLOW ALL', isWeb: false, isDisabled: false, profile: createdAdmin.id });
   } catch (err) {
     sails.log.debug('Err creating routes', err);
   }
@@ -88,6 +93,10 @@ module.exports.bootstrap = async function (done) {
     await Routes.findOrCreate({ url: '/profile/:id', profile: createdUser.id }, { name: 'PROFILE ID', url: '/profile/:id', boGet: 'DENY ALL', boPost: 'DENY ALL', boDelete: 'DENY ALL', boPatch: 'DENY ALL', isWeb: false, isDisabled: false, profile: createdUser.id });
     await Routes.findOrCreate({ url: '/routes', profile: createdUser.id }, { name: 'ROUTES', url: '/routes', boGet: 'DENY ALL', boPost: 'DENY ALL', boDelete: 'DENY ALL', boPatch: 'DENY ALL', isWeb: false, isDisabled: false, profile: createdUser.id });
     await Routes.findOrCreate({ url: '/routes/:id', profile: createdUser.id }, { name: 'ROUTES ID', url: '/routes/:id', boGet: 'DENY ALL', boPost: 'DENY ALL', boDelete: 'DENY ALL', boPatch: 'DENY ALL', isWeb: false, isDisabled: false, profile: createdUser.id });
+    await Routes.findOrCreate({ url: '/market', profile: createdUser.id }, { name: 'MARKET', url: '/market', boGet: 'ALLOW ALL', boPost: 'DENY ALL', boDelete: 'DENY ALL', boPatch: 'DENY ALL', isWeb: false, isDisabled: false, profile: createdUser.id });
+    await Routes.findOrCreate({ url: '/market/:id', profile: createdUser.id }, { name: 'MARKET ID', url: '/market/:id', boGet: 'ALLOW ALL', boPost: 'DENY ALL', boDelete: 'DENY ALL', boPatch: 'DENY ALL', isWeb: false, isDisabled: false, profile: createdUser.id });
+    await Routes.findOrCreate({ url: '/new', profile: createdUser.id }, { name: 'NEWS', url: '/new', boGet: 'ALLOW ALL', boPost: 'DENY ALL', boDelete: 'DENY ALL', boPatch: 'DENY ALL', isWeb: false, isDisabled: false, profile: createdUser.id });
+    await Routes.findOrCreate({ url: '/new/:id', profile: createdUser.id }, { name: 'NEWS ID', url: '/new/:id', boGet: 'ALLOW ALL', boPost: 'DENY ALL', boDelete: 'DENY ALL', boPatch: 'DENY ALL', isWeb: false, isDisabled: false, profile: createdUser.id });
   } catch (err) {
     sails.log.debug('Err creating routes', err);
   }

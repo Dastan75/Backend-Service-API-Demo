@@ -44,8 +44,15 @@ module.exports = async function (req, res, next) {
     let userId = req.token.id;
     let url = req.route.path;
     
-    if (url === '/user/:id?') {
+    //DELETE change routes
+    if (url === '/user/:id?') { 
         url = '/user/:id'
+    }
+    if (url === '/market/:id?') {
+        url = '/market/:id'
+    }
+    if (url === '/news/:id?') {
+        url = '/news/:id'
     }
 
     let method = req.method;

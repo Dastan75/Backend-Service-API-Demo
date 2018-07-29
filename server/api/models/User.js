@@ -39,10 +39,10 @@ module.exports = {
   },
 
   customToJSON: function () {
-    return _.omit(this, ['encryptedPassword'])
+    return _.omit(this, ['encryptedPassword']) // Never return password
   },
 
-  beforeCreate: function (values, next) {
+  beforeCreate: function (values, next) { // Function bcrypt password before create user
     bcrypt.genSalt(10, function (err, salt) {
       if(err) 
         return next(err);
@@ -51,7 +51,6 @@ module.exports = {
           return next(err);
         values.encryptedPassword = hash;
         delete values.password;
-        delete values.confirmPassword;
         return next();
       })
     })
