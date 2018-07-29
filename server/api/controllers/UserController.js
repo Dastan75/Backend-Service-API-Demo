@@ -17,7 +17,11 @@ module.exports = {
             return res.status(401).json({ err: 'Password invalid' });
         }
         try {
-
+            let refUser = null;
+            if (req.body.ref) {
+                refUser = req.body.ref
+                delete req.body.ref
+            }
             let profile = await Profile.findOne({
                 name: 'USER'
             });
@@ -25,6 +29,16 @@ module.exports = {
             req.body.referenceCode = 'ref-' + Date.now()
 
             let createdUser = await User.create(req.body).fetch();
+            try {
+                if (refUser) {
+                    let ref = await User.findOne({
+                        referenceCode: refUser
+                    });
+                    await User.addToCollection(createdUser.id, 'referenceUser', ref.id);
+                }
+            } catch (err) {
+                sails.log.debug("error ref users:", err);
+            }
             return res.status(201).json({ user: createdUser });
 
         } catch (err) {

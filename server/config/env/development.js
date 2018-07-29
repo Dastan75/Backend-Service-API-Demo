@@ -52,9 +52,9 @@ module.exports = {
       ****************************************************************************/
       // ssl: true,
       adapter: 'sails-mongo',
-      host: 'mongo',
+      host: 'localhost',
       port: 27017,
-      database:'template'
+      database:'BackendTest'
     },
   },
 

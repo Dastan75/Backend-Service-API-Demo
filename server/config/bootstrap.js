@@ -50,6 +50,7 @@ module.exports.bootstrap = async function (done) {
     await User.findOrCreate({ email: '1' }, {
       email: '1',
       password: '@@@@',
+      nickname: 'ADMIN TEST',
       name: 'test',
       firstName: 'Admin',
       gender: '1',

@@ -62,7 +62,7 @@ module.exports = {
       adapter: 'sails-mongo',
       host: 'mongo',
       port: 27017,
-      database:'test'
+      database:'BackendTest'
     },
 
   },

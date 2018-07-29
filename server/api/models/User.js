@@ -27,6 +27,14 @@ module.exports = {
     profile: {
       model: 'profile'
     },
+    referenceUser: {
+      collection: 'user',
+      via: 'referred'
+    },
+    referred: {
+      collection: 'user',
+      via: 'referenceUser'
+    },
   },
 
   customToJSON: function () {
