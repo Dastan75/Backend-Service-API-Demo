@@ -57,14 +57,14 @@ module.exports = {
                     return next(err);
                 bcrypt.hash(tmpPassword, salt, async function (err, hash) {
                     if (err)
-                        return res.status(204).json({ err: 'Password update failed' });
+                        return res.status(404).json({ err: 'Password update failed' });
                     try {
                         req.body.encryptedPassword = hash;
                         await User.update(req.params.id).set(req.body);
                         return res.status(200).json({ status: 'Success' });
                     } catch (err) {
                         sails.log.debug(err);
-                        return res.status(204).json({ err: 'Password update failed' });
+                        return res.status(404).json({ err: 'Password update failed' });
                     }
                 })
             })
@@ -74,7 +74,7 @@ module.exports = {
                 return res.status(200).json({ status: 'Success' });
             } catch (err) {
                 sails.log.debug(err);
-                return res.status(204).json({ err: 'Password update failed' });
+                return res.status(404).json({ err: 'Password update failed' });
             }
         }
 
@@ -89,19 +89,19 @@ module.exports = {
                 let newPassword = sails.config.custom.defaultPassword.password + Math.floor(Math.random() * 100000000)
                 bcrypt.hash(newPassword, salt, async function (err, hash) {
                     if (err)
-                        return res.status(204).json({ err: 'Password update failed' });
+                        return res.status(404).json({ err: 'Password update failed' });
                     try {
                         let user = await User.update({ email: query }).set({ encryptedPassword: hash, state: '1' }).fetch();
 
                         return res.status(200).json({ status: 'Success' });
                     } catch (err) {
                         sails.log.debug(err);
-                        return res.status(204).json({ err: 'Password update failed' });
+                        return res.status(404).json({ err: 'Password update failed' });
                     }
                 })
             })
         } else {
-            return res.status(204).json({ err: 'No data found' });
+            return res.status(404).json({ err: 'No data found' });
         }
     },
 };
