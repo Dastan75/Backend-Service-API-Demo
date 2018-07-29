@@ -1,6 +1,7 @@
 # Backend Service - Coding challenge?
 
-Creation of a strong, reliable API with good architecture
+Creation of a strong, reliable API with good architecture.
+
 Need to be easy to learn and to update.
 
 Use of the framwork [Sails](http://sailsjs.org)
@@ -9,12 +10,13 @@ Use of the framwork [Sails](http://sailsjs.org)
   * Easy security configuration with policies
   * Default CRUD but can be overwrited
 
-Use of docker to deploy app easy and a scalable solution
-Run by docker-compose with prod and dev versions
+Use of docker to deploy app easy and a scalable solution.
+
+Run by docker-compose with prod and dev versions.
 
 Use of Git-Flow
 
-This API has a very easy security system use in the polices to remove or add permissions
+This API has a very easy security system use in the polices to remove or add permissions.
 
 Requirements
 ------
@@ -68,8 +70,9 @@ CRON:
 To do
 ------
 
-Make a interface with React to manage the profiles and routes
-Use Redis
+Make a interface with React to manage the profiles and routes.
+
+Use Redis.
 
 My link
 ------
