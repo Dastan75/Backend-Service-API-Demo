@@ -21,6 +21,7 @@ module.exports = {
     address:            { type: 'string' },
     zipCode:            { type: 'number' },
     city:               { type: 'string' },
+    message:            { type: 'string' },
     lat:                { type: 'string' },
     long:               { type: 'string' },
     state:              { type: 'number', required: true }, // 1 waiting sms - 2 as account validated - 0 Disabled

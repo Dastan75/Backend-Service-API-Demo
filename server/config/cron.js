@@ -9,7 +9,7 @@
 // }
 
 module.exports.cron = {
-    firstJob: {
+    updateSmsEvery10s: {
         schedule: '*/10 * * * * *',
         onTick: async function () {
             asyncForEach = async (array, callback) => {
@@ -17,15 +17,15 @@ module.exports.cron = {
                     await callback(array[index], index, array)
                 }
             }
-            sails.log.debug("cron called");
+            sails.log.debug("Cron: updateSmsEvery10s called");
             let users = null
             try {
                 users = await User.find({ state: 1 });
             } catch (err) {
-                sails.log.debug("error cron list users:", err);
+                sails.log.debug("error cron: updateSmsEvery10s list users:", err);
             }
             await asyncForEach(users, async user => {
-                // FUNCTION SEND SMS
+                // NEED CALL FUNCTION SEND SMS IF GOOD CHANGE STATE
                 await User.update(user.id).set({ state: 2 });
             })
         },

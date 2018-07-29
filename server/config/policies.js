@@ -26,31 +26,40 @@ module.exports.policies = {
   '*': false, // Everything resctricted here
   
   'UserController': {
-    '*': false, 
-    'create': true, // Everyone can create a account
-    'update': ['isAuthorized', 'asPermission', 'userPolicies'],
-    'find': ['isAuthorized', 'asPermission'],
-    'findOne': ['isAuthorized', 'asPermission', 'userPolicies'],
-    'destroy': ['isAuthorized', 'asPermission', 'userPolicies'],
-    'forgot': true,
+    '*':        false, // Default refuse everyone
+    'create':   true, // Everyone can create a account
+    'update':   ['isAuthorized', 'asPermission', 'userPolicies'],
+    'find':     ['isAuthorized', 'asPermission'],
+    'findOne':  ['isAuthorized', 'asPermission', 'userPolicies'],
+    'destroy':  ['isAuthorized', 'asPermission', 'userPolicies'],
+    'forgot':   true,
   },
 
   'ProfileController': {
-    '*': false, 
-    'create': ['isAuthorized', 'asPermission'],
-    'update': ['isAuthorized', 'asPermission'],
-    'find': ['isAuthorized', 'asPermission'],
-    'findOne': ['isAuthorized', 'asPermission'],
-    'destroy': ['isAuthorized', 'asPermission']
+    '*':        false, 
+    'create':   ['isAuthorized', 'asPermission'],
+    'update':   ['isAuthorized', 'asPermission'],
+    'find':     ['isAuthorized', 'asPermission'],
+    'findOne':  ['isAuthorized', 'asPermission'],
+    'destroy':  ['isAuthorized', 'asPermission']
   },
 
   'RoutesController': {
-    '*': false, 
-    'create': ['isAuthorized', 'asPermission'],
-    'update': ['isAuthorized', 'asPermission'],
-    'find': ['isAuthorized', 'asPermission'],
-    'findOne': ['isAuthorized', 'asPermission'],
-    'destroy': ['isAuthorized', 'asPermission']
+    '*':        false, 
+    'create':   ['isAuthorized', 'asPermission'],
+    'update':   ['isAuthorized', 'asPermission'],
+    'find':     ['isAuthorized', 'asPermission'],
+    'findOne':  ['isAuthorized', 'asPermission'],
+    'destroy':  ['isAuthorized', 'asPermission']
+  },
+
+  'NewsController': {
+    '*':        false, 
+    'create':   ['isAuthorized', 'asPermission'],
+    'update':   ['isAuthorized', 'asPermission'],
+    'find':     true,
+    'findOne':  true,
+    'destroy':  ['isAuthorized', 'asPermission']
   },
 
   'AuthController': {
