@@ -13,8 +13,8 @@ module.exports = {
             req.body.password = sails.config.custom.defaultPassword.password;
             req.body.confirmPassword = sails.config.custom.defaultPassword.password;
         }
-        if (req.body.password !== req.body.confirmPassword && sails.config.custom.defaultPassword.asDefaultPassword === false) {
-            return res.status(401).json({ err: 'Password doesn\'t match' });
+        if (!req.body.password && sails.config.custom.defaultPassword.asDefaultPassword === false) {
+            return res.status(401).json({ err: 'Password invalid' });
         }
         try {
 
@@ -22,6 +22,7 @@ module.exports = {
                 name: 'USER'
             });
             req.body.profile = profile.id
+            req.body.referenceCode = 'ref-' + Date.now()
 
             let createdUser = await User.create(req.body).fetch();
             return res.status(201).json({ user: createdUser });
@@ -71,7 +72,7 @@ module.exports = {
             bcrypt.genSalt(10, function (err, salt) {
                 if (err)
                     return next(err);
-                let newPassword = sails.config.custom.defaultPassword.password + Math.floor(Math.random() * Math.floor(100000000))
+                let newPassword = sails.config.custom.defaultPassword.password + Math.floor(Math.random() * 100000000)
                 bcrypt.hash(newPassword, salt, async function (err, hash) {
                     if (err)
                         return res.status(204).json({ err: 'Password update failed' });
