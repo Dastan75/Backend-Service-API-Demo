@@ -4,13 +4,15 @@ Creation of a strong, reliable API with good architecture
 Need to be easy to learn and to update.
 
 Use of the framwork [Sails](http://sailsjs.org)
-    * ORM for databases
-    * Good separation between Model, View and Controller 
-    * Easy security configuration with policies
-    * Default CRUD but can be overwrited
+  * ORM for databases
+  * Good separation between Model, View and Controller 
+  * Easy security configuration with policies
+  * Default CRUD but can be overwrited
 
 Use of docker to deploy app easy and a scalable solution
 Run by docker-compose with prod and dev versions
+
+Use of Git-Flow
 
 This API has a very easy security system use in the polices to remove or add permissions
 
